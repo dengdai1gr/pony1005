@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BlowHair: MonoBehaviour {
+public class BlowHairTail: MonoBehaviour {
 
 
 	CBezier cbezier;
@@ -9,12 +9,12 @@ public class BlowHair: MonoBehaviour {
 	public Transform center;
 	private Vector2 direction;
 	
-	public float p1p=0.5f;
+	public float p1p=0.4f;
 	public float p3p=1.5f;
 	
 	
-	public float p1ylow=0.9f;
-	public float p3ylow=0.9f;
+	public float p1ylow=0.4f;
+	public float p3ylow=0.4f;
 	
 	void Start () {
 	
@@ -50,16 +50,39 @@ public class BlowHair: MonoBehaviour {
 					direction.x=Mathf.Clamp(direction.x,-1-Random.value*0.5f,1+Random.value*0.05f);
 					direction.y=Mathf.Clamp(direction.y,-1-Random.value*0.5f,1+Random.value*0.05f);
 					
-					cbezier.p1xsl-=direction.x*p1p;
-					cbezier.p1ysl+=direction.y*p1p*p1ylow;	
+					if(cbezier.p3ysl<-10)
+					{
+						cbezier.p1xsl-=direction.x*p1p;
+						cbezier.p1ysl+=direction.y*p1p;	
 		
-					cbezier.p3xsl-=direction.x*p3p;
-					cbezier.p3ysl+=direction.y*p3p*p3ylow;	
+						cbezier.p3xsl-=direction.x*p3p;
+						cbezier.p3ysl+=direction.y*p3p;	
+					}
+					else
+					{
+						cbezier.p1xsl-=direction.x*p1p;
+						cbezier.p1ysl+=direction.y*p1p*p1ylow;	
+		
+						cbezier.p3xsl-=direction.x*p3p;
+						cbezier.p3ysl+=direction.y*p3p*p3ylow;	
+					}
 					controlhair.CheckMaxDis();
 				}
 			
 			}
 		}
+	}
+	
+	
+	void ReceiveChange()
+	{
+		p1ylow=0.9f;
+		p3ylow=0.9f;
+	}
+	void ReceiveBack()
+	{
+		p1ylow=0.4f;
+		p3ylow=0.4f;
 	}
 	
 	

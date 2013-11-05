@@ -21,7 +21,7 @@ function OnGUI()
 	
 	if(GUI.Button(Rect(0,110,80,50),"Reset"))
 	{
-		Application.LoadLevel("Main");
+		Application.LoadLevel("Main 3");
 	}
 }
 

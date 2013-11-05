@@ -57,12 +57,14 @@ public class CutHairs : MonoBehaviour {
 					if(hit.collider.name!="blow" &&hit.collider.name!="brush" && hit.collider.name!="razor" && hit.collider.name!="scissor"  ){
 	    			startto=hit.textureCoord;
 					hairlength=Mathf.Round(startto.x*100)/100.0f;
+					
+					upmesh(hit.collider.gameObject.name);
 					if(hairlength<0.22f)
 					{
 						hairlength=0.22f;
 					}
 					Cut(hit.collider.gameObject.name,hairlength);
-					upmesh(hit.collider.gameObject.name);
+					
 	    		}
 			}
 

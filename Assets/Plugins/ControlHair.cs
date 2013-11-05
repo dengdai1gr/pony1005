@@ -53,8 +53,13 @@ public class ControlHair : MonoBehaviour {
 		x=0;
 		y=0;
 		////x=startp.x-preDrag1.x;
-		x=(preDrag1.x-startp.x)*1.4f;
-		y=(startp.y-preDrag1.y)*1.4f;
+		//x=(preDrag1.x-startp.x)*1.4f;
+		//y=(startp.y-preDrag1.y)*1.4f;
+		
+		x=preDrag1.x-startp.x;
+		y=startp.y-preDrag1.y;
+		
+		
 //		print (x+"//"+y);
 	
 		if(controlp1)//change point p1.x  p1.y  

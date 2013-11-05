@@ -12,7 +12,7 @@ public class CamHitHair : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 	
 		if(Pub.istoolbrush){
 		if (Input.GetKey ("mouse 0")) {
