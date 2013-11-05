@@ -26,7 +26,7 @@ public class ControlHair : MonoBehaviour {
 	
 	void Update () {
 			
-		preDrag1=startp;	
+		
 	}
 
 	void FixedUpdate()
@@ -43,6 +43,7 @@ public class ControlHair : MonoBehaviour {
 			startp=new Vector2(0,0);
 			preDrag1=new Vector2(0,0);
 		}
+		preDrag1=startp;	
 		
 	}
 
