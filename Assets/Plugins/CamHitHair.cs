@@ -20,9 +20,9 @@ public class CamHitHair : MonoBehaviour {
 	
 		if(Pub.istoolbrush){
 			
-			if(Input.touchCount<1 && !Input.GetKey("mouse 0"))
-				return;	
-			
+			//if(Input.touchCount<1 && !Input.GetKey("mouse 0"))
+			//	return;	
+			if (Input.GetKey ("mouse 0")) {
 			//hits=Physics.RaycastAll(gameObject.camera.ScreenPointToRay(Input.mousePosition),100,hairlayer.value);
 			hits=Physics.SphereCastAll(gameObject.camera.ScreenPointToRay(Input.mousePosition),0.5f,100,hairlayer.value);
 			if(hits.Length>0){
@@ -46,4 +46,5 @@ public class CamHitHair : MonoBehaviour {
 			}			
 		}
 	}
+}
 }
