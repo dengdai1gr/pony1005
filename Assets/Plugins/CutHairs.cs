@@ -14,9 +14,8 @@ public class CutHairs : MonoBehaviour {
 	public LayerMask hairlayer;
 	private RaycastHit hit;
 	private RaycastHit[] hits;
-	
 	private Vector2 startto;
-	public float hairlength;
+	private float hairlength;
 	
 	void Start () {
 	
@@ -28,6 +27,79 @@ public class CutHairs : MonoBehaviour {
 	
 		if(Pub.istoolcut)
 		{		
+			if(Input.touchCount<1 && !Input.GetKey("mouse 0"))
+				return;	
+			ToCut();
+		}
+		
+		if(Pub.istoolrazor)
+		{		
+			if(Input.touchCount<1 && !Input.GetKey("mouse 0"))
+				return;
+			 ToRazor();
+		}	
+	}
+	
+	
+	void ToCut()
+	{
+		
+		hits=Physics.SphereCastAll(Camera.main.ScreenPointToRay(Input.mousePosition),0.7f,100,hairlayer.value);
+		if(hits.Length>0){
+			
+			foreach(RaycastHit hit in hits)
+			{
+	    		startto=hit.textureCoord;
+				hairlength=Mathf.Round(startto.x*100)/100.0f;
+				if(hairlength>0.975f){}
+				else
+				{
+					if(hairlength<0.22f)
+					{
+						hairlength=0.22f;
+					}
+					else
+					{		
+						upmesh(hit.collider.gameObject.name);//remove mesh collider
+						Cut(hit.collider.gameObject.name,hairlength);
+					}
+				}	
+					
+			}
+		}
+	}	
+	
+	void ToRazor()
+	{
+		hits=Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition),100,hairlayer.value);
+		if(hits.Length>0){
+			
+			foreach(RaycastHit hit in hits)
+			{//print(hits.Length);	
+	    		startto=hit.textureCoord;
+				hairlength=Mathf.Round(startto.x*100)/100.0f;
+				if(hairlength>0.97f){}
+				else
+				{
+					if(hairlength<0.3f)
+					{
+						//here set hair material img
+						//hit.collider.gameObject.SetActive(false);
+					}
+					else
+					{				
+						upmesh(hit.collider.gameObject.name);
+						Cut(hit.collider.gameObject.name,hairlength);
+					
+					}
+				}	
+			}	
+		}
+	}
+	
+}
+	
+
 //			if (Physics.Raycast (Camera.main.ScreenPointToRay(Input.mousePosition),out hit,hairlayer.value))
 //	   	 	{	  
 //	    		//if(hit.collider.name=="p1"){
@@ -45,64 +117,3 @@ public class CutHairs : MonoBehaviour {
 //					upmesh();
 //	    		}
 //			}
-				
-							
-				
-			hits=Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition),100,hairlayer.value);
-			if(hits.Length>0){
-			
-				foreach(RaycastHit hit in hits)
-				{
-					//print(hits.Length);
-					if(hit.collider.name!="blow" &&hit.collider.name!="brush" && hit.collider.name!="razor" && hit.collider.name!="scissor"  ){
-	    			startto=hit.textureCoord;
-					hairlength=Mathf.Round(startto.x*100)/100.0f;
-					
-					upmesh(hit.collider.gameObject.name);
-					if(hairlength<0.22f)
-					{
-						hairlength=0.22f;
-					}
-					Cut(hit.collider.gameObject.name,hairlength);
-					
-	    		}
-			}
-
-				
-				
-						
-						
-						
-						
-				
-				
-//				if(hit.collider.name=="p2"){
-//					
-//	    			startto=hit.textureCoord;
-//					//print(hit.collider.name+"/////"+startto.x+"aaaaa"+startto.y);
-//					hairlength=Mathf.Round(startto.x*100)/100.0f;
-//					Cut(hit.collider.gameObject.name,hairlength);
-//					if(hairlength<0.22f)
-//					{
-//						hairlength=0.22f;
-//					}
-//					upmesh();
-//	    		}
-	    	
-		}
-	}
-	
-	
-//	void CutHair()
-//	{
-//		hairlength=Mathf.Round(startto.x*100)/100.0f;
-//		print (hairlength);
-//		Cut(hairlength);
-//		upmesh();
-//	}	
-
-
-	}
-}
-	
-

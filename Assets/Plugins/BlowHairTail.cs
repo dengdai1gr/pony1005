@@ -5,7 +5,7 @@ public class BlowHairTail: MonoBehaviour {
 
 
 	CBezier cbezier;
-	ControlHair controlhair;
+	ControlTail controltail;
 	public Transform center;
 	private Vector2 direction;
 	
@@ -19,7 +19,7 @@ public class BlowHairTail: MonoBehaviour {
 	void Start () {
 	
 		cbezier=GetComponent<CBezier>();
-		controlhair=GetComponent<ControlHair>();
+		controltail=GetComponent<ControlTail>();
 		
 	}
 
@@ -41,6 +41,7 @@ public class BlowHairTail: MonoBehaviour {
 					p1force=Random.value*p1p;//0.5
 					cbezier.p1xsl+=p1force;
 					cbezier.p1ysl+=p1force;
+					
 					p1force=Random.value*p1p;//0.6
 					cbezier.p3xsl+=p1force;
 					cbezier.p3ysl+=p1force;
@@ -61,12 +62,12 @@ public class BlowHairTail: MonoBehaviour {
 					else
 					{
 						cbezier.p1xsl-=direction.x*p1p;
-						cbezier.p1ysl+=direction.y*p1p*p1ylow;	
+					    cbezier.p1ysl+=direction.y*p1p*p1ylow;	
 		
 						cbezier.p3xsl-=direction.x*p3p;
 						cbezier.p3ysl+=direction.y*p3p*p3ylow;	
 					}
-					controlhair.CheckMaxDis();
+					controltail.CheckMaxDis();
 				}
 			
 			}
@@ -76,13 +77,13 @@ public class BlowHairTail: MonoBehaviour {
 	
 	void ReceiveChange()
 	{
-		p1ylow=0.9f;
-		p3ylow=0.9f;
+		//p1ylow=0.9f;
+		//p3ylow=0.9f;
 	}
 	void ReceiveBack()
 	{
-		p1ylow=0.4f;
-		p3ylow=0.4f;
+		//p1ylow=0.4f;
+		//p3ylow=0.4f;
 	}
 	
 	

@@ -17,6 +17,11 @@ public class BlowTailCheck : MonoBehaviour {
 		{
 			nowp=Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			dis=Vector2.Distance(nowp,new Vector2(center.position.x,center.position.y));
+			
+			
+			
+			//print (dis); //1
+			
 			if(dis<8)//very close
 			{
 			gameObject.BroadcastMessage("ReceiveChange");

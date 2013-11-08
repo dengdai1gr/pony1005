@@ -8,6 +8,7 @@ public class Pub : MonoBehaviour {
 	public static bool istoolbrush;
 	public static bool istoolrazor;
 	public static bool istoolblow;
+	public static bool ispilatory;
 	
 	void Start () {
 	
@@ -23,7 +24,6 @@ public class Pub : MonoBehaviour {
 	
 	void CheckTool(int number)
 	{
-		//print (number);
 		switch(number)
 		{
 		case 0:
@@ -32,6 +32,7 @@ public class Pub : MonoBehaviour {
 			istoolbrush=false;
 			istoolrazor=false;
 			istoolblow=false;
+			ispilatory=false;
 			break;
 		case 1:
 			//iscontrol=false;
@@ -39,6 +40,7 @@ public class Pub : MonoBehaviour {
 			istoolbrush=false;
 			istoolrazor=false;
 			istoolblow=false;
+			ispilatory=false;
 			break;
 			
 		case 2:
@@ -47,6 +49,7 @@ public class Pub : MonoBehaviour {
 			istoolbrush=true;
 			istoolrazor=false;
 			istoolblow=false;
+			ispilatory=false;
 			break;
 			 
 		case 3:
@@ -55,6 +58,7 @@ public class Pub : MonoBehaviour {
 			istoolbrush=false;
 			istoolrazor=true;
 			istoolblow=false;
+			ispilatory=false;
 			break;
 			
 		case 4:
@@ -63,6 +67,16 @@ public class Pub : MonoBehaviour {
 			istoolbrush=false;
 			istoolrazor=false;
 			istoolblow=true;
+			ispilatory=false;
+			break;
+			
+		case 5:
+			//iscontrol=false;
+			istoolcut=false;
+			istoolbrush=false;
+			istoolrazor=false;
+			istoolblow=false;
+			ispilatory=true;
 			break;
 			
 		}

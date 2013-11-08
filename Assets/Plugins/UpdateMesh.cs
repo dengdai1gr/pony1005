@@ -3,8 +3,6 @@ using System.Collections;
 
 public class UpdateMesh : MonoBehaviour {
 
-	private string addname="";
-	private string[] hitgms;
 	
 	void Start () {
 	
@@ -12,22 +10,26 @@ public class UpdateMesh : MonoBehaviour {
 	}
 
 	void Update () {
-	
+
 	}
 	
-	void Removee(string srem)
+	void UpMesh(string gamename)//remove mesh when hit
 	{
-		GameObject gm= GameObject.Find(srem);
-		Destroy(gm.GetComponent<MeshCollider>());
+		GameObject gm= GameObject.Find(gamename);
+		if(gm && gm.GetComponent<MeshCollider>())
+		{
+			Destroy(gm.GetComponent<MeshCollider>());
+		}
 	}
-	
-	void UpMesh(string gamename)
+
+	void OnDestroy()
 	{
-		print (gamename);
-		Removee(gamename);
+		CutHairs.upmesh-=UpMesh;
 	}
-	
-	
+}
+
+
+
 
 //	void Addd()
 //	{
@@ -54,15 +56,6 @@ public class UpdateMesh : MonoBehaviour {
 //		addname=gamename;
 //		Invoke("Addd",0.05f);	
 //	}
-	
-	void OnDestroy()
-	{
-		CutHairs.upmesh-=UpMesh;
-	}
-}
-
-
-
 
 //	void Addd()
 //	{

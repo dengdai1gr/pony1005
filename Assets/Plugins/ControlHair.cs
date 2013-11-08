@@ -14,9 +14,9 @@ public class ControlHair : MonoBehaviour {
 	public bool controlp2=false;
 	public bool controlp3=false;
 	public float hairlength=1.0f;
-	
-	
 	public bool isshort=false;//if hair length is too short can't cut
+	
+	
 	void Start () {
 		
 		CutHairs.Cut+=SetHairLength;
@@ -26,7 +26,6 @@ public class ControlHair : MonoBehaviour {
 	
 	void Update () {
 			
-		
 	}
 
 	void FixedUpdate()
@@ -54,54 +53,43 @@ public class ControlHair : MonoBehaviour {
 		x=0;
 		y=0;
 		////x=startp.x-preDrag1.x;
-		//x=(preDrag1.x-startp.x)*1.4f;
-		//y=(startp.y-preDrag1.y)*1.4f;
-		
-		x=preDrag1.x-startp.x;
-		y=startp.y-preDrag1.y;
-		
-		
+		x=(preDrag1.x-startp.x)*1.3f;
+		y=(startp.y-preDrag1.y)*1.3f;
+		//x=preDrag1.x-startp.x;
+		//y=startp.y-preDrag1.y;	
 //		print (x+"//"+y);
-	
 		if(controlp1)//change point p1.x  p1.y  
 		{
 			mybezier.p1xsl+=x;
-			mybezier.p1ysl+=y;
-					
-			mybezier.p3xsl+=x*0.5f;//0.75
-			mybezier.p3ysl+=y*0.5f;
-			
-			mybezier.p2xsl+=x*0.25f;//0.5
-			mybezier.p2ysl+=y*0.25f;		
+			mybezier.p1ysl+=y;				
+			mybezier.p3xsl+=x*0.6f;//0.75
+			mybezier.p3ysl+=y*0.6f;
+			mybezier.p2xsl+=x*0.5f;//0.5
+			mybezier.p2ysl+=y*0.5f;		
 		}
 		
 		if(controlp2)
 		{
 			mybezier.p2xsl+=x;
 			mybezier.p2ysl+=y;	
-		
-			mybezier.p3xsl+=x*0.25f;//0.5
-			mybezier.p3ysl+=y*0.25f;
-	
-			mybezier.p1xsl+=x*0.25f;//0.5
-			mybezier.p1ysl+=y*0.25f;
+			mybezier.p3xsl+=x*0.5f;//0.5
+			mybezier.p3ysl+=y*0.5f;
+			mybezier.p1xsl+=x*0.3f;//0.5
+			mybezier.p1ysl+=y*0.3f;
 		}
 		
 		if(controlp3)
 		{
 			mybezier.p3xsl+=x;
 			mybezier.p3ysl+=y;
-	
 			mybezier.p1xsl+=x*0.15f;
 			mybezier.p1ysl+=y*0.15f;//0.25
-	
 			mybezier.p2xsl+=-x*1.15f;
 			mybezier.p2ysl+=-y*1.15f;	
-		}
-	
+		}	
 	}
 	
-	public void CheckMaxDis()// max length 
+	public void CheckMaxDis()//hair max length 
 	{
 		Vector2 maxp1v = Vector2.ClampMagnitude(new Vector2(mybezier.p1xsl,mybezier.p1ysl),3*hairlength);//p1  p0
 		mybezier.p1xsl= maxp1v.x;
@@ -117,10 +105,7 @@ public class ControlHair : MonoBehaviour {
 		mybezier.p3xsl= maxp3v.x;
 		mybezier.p3ysl= maxp3v.y;
 		
-		
-		
-		//test finger and center distance
-		CheckDis();
+		CheckDis();//finger and hair center distance if far can't control
 		TooShort();
 	}
 	
@@ -169,9 +154,7 @@ public class ControlHair : MonoBehaviour {
 	void TooShort(){//short
 		if(hairlength<0.22f)
 		{
-			//print ("short");
-			Destroy(gameObject.GetComponent("MeshCollider"));
-			//gameObject.SetActiveRecursively(true);
+			//Destroy(gameObject.GetComponent("MeshCollider"));
 			isshort=false;
 		}
 		else{
@@ -179,31 +162,40 @@ public class ControlHair : MonoBehaviour {
 		}
 	}
 	
-	
-	//delegate cut hair
-	void SetHairLength(string myname, float numb)
+	void SetHairLength(string myname, float numb)//delegate cut hair
 	{
 		if(isshort){
 			if(myname==gameObject.name){
 				hairlength*=numb;
 				CheckMaxDis();
-				Invoke("AddM",0.05f);
+				Invoke("AddM",0.2f);
 			}
 		}
 	}
 	
-	// add meshcollider
-	void AddM()
+	void AddM()// add meshcollider
 	{
 		if(!gameObject.GetComponent<MeshCollider>())
 		{	
 			gameObject.AddComponent<MeshCollider>();	
-			gameObject.SetActiveRecursively(false);
-			gameObject.SetActive(true);	
+			//gameObject.SetActiveRecursively(false);
+			//gameObject.SetActive(true);	
 		}
 	}
 	
 	
+	void HairLengthAdd()
+	{
+		if(hairlength<2.6f){
+			
+			hairlength+=0.03f;
+			mybezier.p1xsl=mybezier.p1xsl*1.05f;
+			mybezier.p1ysl=mybezier.p1ysl*1.05f;
+			mybezier.p3xsl=mybezier.p3xsl*1.1f;
+			mybezier.p3ysl=mybezier.p3ysl*1.1f;
+		}		
+		CheckMaxDis();
+	}
 	
 	void OnDestroy()
 	{

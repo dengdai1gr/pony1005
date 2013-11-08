@@ -50,15 +50,20 @@
      <Compile Include="Assets\Plugins\CBezier.cs" />
      <Compile Include="Assets\Plugins\CamHitHair.cs" />
      <Compile Include="Assets\Plugins\ControlHair.cs" />
+     <Compile Include="Assets\Plugins\ControlTail.cs" />
      <Compile Include="Assets\Plugins\CustomLineRenderer.cs" />
      <Compile Include="Assets\Plugins\CutHairs.cs" />
+     <Compile Include="Assets\Plugins\GrowUp.cs" />
+     <Compile Include="Assets\Plugins\LeanTween.cs" />
      <Compile Include="Assets\Plugins\Pub.cs" />
+     <Compile Include="Assets\Plugins\ToolPic.cs" />
      <Compile Include="Assets\Plugins\Tools.cs" />
      <Compile Include="Assets\Plugins\TrailRend.cs" />
      <Compile Include="Assets\Plugins\UpdateMesh.cs" />
      <Compile Include="Assets\Plugins\script\Bezier.cs" />
      <Compile Include="Assets\Plugins\script\Fps.cs" />
      <Compile Include="Assets\Plugins\script\FpsShow.cs" />
+     <Compile Include="Assets\Plugins\test\TestDownTail.cs" />
      <Compile Include="Assets\Plugins\test\ToolBrushTest.cs" />
      <None Include="Assets\Fbx\NewShader.shader" />
   </ItemGroup>

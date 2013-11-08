@@ -4,9 +4,9 @@ using System.Collections;
 public class FpsShow : MonoBehaviour {
 	private float a;
 	private float timecount=0;
-	//public TextMesh FPS;
 	public GUIStyle gs;
 	private string fps;
+	
 	void Update()
 	{
 		a++;
@@ -16,7 +16,6 @@ public class FpsShow : MonoBehaviour {
 			timecount=0;
 			a=a/0.5f;
 			fps=""+a.ToString();
-			
 			a=0;
 		}
 	}

@@ -5,7 +5,7 @@ public class CBezier : MonoBehaviour
 {
 
     private Bezier myBezier;
-	private CustomLineRenderer line;
+	public CustomLineRenderer line;
 	public Material material;
 	public float p1xsl;
 	public float p1ysl;
@@ -31,8 +31,8 @@ public class CBezier : MonoBehaviour
     void FixedUpdate()
     {
 		//tests
-		//	float offset = Time.time * scrollSpeed;
-		//line.renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
+		//float offset = Time.time * 0.05f;
+		//line.renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, offset));
 
        	myBezier = new Bezier( new Vector3( 0, 0, 0f ), new Vector3(p1xsl,p1ysl,0) ,new Vector3(p2xsl,p2ysl,0), new Vector3( p3xsl, p3ysl, 0f ) );
 		for(int i =0; i < linecount; i++)

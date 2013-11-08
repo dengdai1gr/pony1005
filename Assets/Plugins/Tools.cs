@@ -8,12 +8,6 @@ public class Tools : MonoBehaviour {
 	static public event EventHandler HitTool;
 	private RaycastHit hit;
 	public LayerMask toollayer;
-	
-	public Texture2D[] img;
-	public Texture2D[] imgl;
-	public GameObject [] toolsgameobject;
-	//public Mesh meshToCollider;
-	
 	private GameObject[] gm;
 	
 	void Awake()
@@ -24,87 +18,67 @@ public class Tools : MonoBehaviour {
 	void Start () {
 	
 		HitTool(2);
-		ChangeImg(2);
+		ChangeImg("brush");
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 		if(Input.GetKeyDown("mouse 0")){
 			
-			if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit,toollayer.value)){
-				
+			if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit,toollayer.value)){			
 
 				if(hit.collider.name=="scissor"){					
 					HitTool(1);	
-					ChangeImg(1);
-					Addd();
-					RemoveControlCube();
+					ChangeImg("scissor");
+					AddMesh();
+					RemoveControl();
 				}
 				if(hit.collider.name=="brush"){
 					HitTool(2);
-					ChangeImg(2);
-					Removee();
-					AddControlCube();
+					ChangeImg("brush");
+					RemoveMesh();
+					AddControl();
 				}
 				if(hit.collider.name=="razor"){
 					HitTool(3);
-					ChangeImg(3);
-					Removee();
-					RemoveControlCube();
+					ChangeImg("razor");
+					AddMesh();
+					RemoveControl();
 				}
 				if(hit.collider.name=="blow"){
 					HitTool(4);
-					ChangeImg(4);
-					Removee();
-					RemoveControlCube();
+					ChangeImg("blow");
+					RemoveMesh();
+					RemoveControl();
+				}
+				if(hit.collider.name=="pilatory"){
+					HitTool(5);
+					ChangeImg("pilatory");
+					RemoveMesh();
+					RemoveControl();
 				}
 			}
 		}
 		
 	}
-	void ChangeImg(int num)
+	void ChangeImg(string toolname)//change tools texture
 	{
-		switch(num)
+		GameObject[] tools= GameObject.FindGameObjectsWithTag("tooltag");
+		foreach(GameObject  toolgm in tools)
 		{
-		case 0:
-			toolsgameobject[1].renderer.material.mainTexture=img[1];
-			toolsgameobject[2].renderer.material.mainTexture=img[2];
-			toolsgameobject[3].renderer.material.mainTexture=img[3];
-			toolsgameobject[4].renderer.material.mainTexture=img[4];
-			break;
-		case 1:
-			toolsgameobject[1].renderer.material.mainTexture=imgl[1];
-			toolsgameobject[2].renderer.material.mainTexture=img[2];
-			toolsgameobject[3].renderer.material.mainTexture=img[3];
-			toolsgameobject[4].renderer.material.mainTexture=img[4];
-			break;
-			
-		case 2:
-			toolsgameobject[1].renderer.material.mainTexture=img[1];
-			toolsgameobject[2].renderer.material.mainTexture=imgl[2];
-			toolsgameobject[3].renderer.material.mainTexture=img[3];
-			toolsgameobject[4].renderer.material.mainTexture=img[4];
-			break;
-			 
-		case 3:
-			toolsgameobject[1].renderer.material.mainTexture=img[1];
-			toolsgameobject[2].renderer.material.mainTexture=img[2];
-			toolsgameobject[3].renderer.material.mainTexture=imgl[3];
-			toolsgameobject[4].renderer.material.mainTexture=img[4];
-			break;
-			
-		case 4:
-			toolsgameobject[1].renderer.material.mainTexture=img[1];
-			toolsgameobject[2].renderer.material.mainTexture=img[2];
-			toolsgameobject[3].renderer.material.mainTexture=img[3];
-			toolsgameobject[4].renderer.material.mainTexture=imgl[4];
-			break;
-			
+			if(toolgm.name!=toolname)
+			{
+				toolgm.SendMessage("NoSelect");
+			}
+			else
+			{
+				toolgm.SendMessage("IsSelect");
+			}
 		}
+
 	}
 	
-	void Addd() //when cut  add mesh
+	void AddMesh() //when cut  add mesh
 	{
 		foreach(GameObject hair in gm)
 		{
@@ -113,17 +87,15 @@ public class Tools : MonoBehaviour {
 		}
 	}
 			
-	void Removee()//remove meshcollider
+	void RemoveMesh()//remove meshcollider
 	{
-		//GameObject[] gm= GameObject.FindGameObjectsWithTag("hairtag");
 		foreach(GameObject hair in gm)
 		{
 			Destroy(hair.GetComponent<MeshCollider>());
-			//hair.SetActiveRecursively(true);
 		}
 	}
 	
-	void RemoveControlCube()
+	void RemoveControl()
 	{
 		foreach(GameObject hair in gm)
 		{
@@ -131,7 +103,7 @@ public class Tools : MonoBehaviour {
 			hair.SetActive(true);
 		}
 	}
-	void AddControlCube()
+	void AddControl()
 	{
 		foreach(GameObject hair in gm)
 		{
