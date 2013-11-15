@@ -6,7 +6,7 @@ public class BlowHairTail: MonoBehaviour {
 
 	CBezier cbezier;
 	ControlTail controltail;
-	public Transform center;
+	//public Transform center;
 	private Vector2 direction;
 	
 	public float p1p=0.4f;
@@ -26,13 +26,13 @@ public class BlowHairTail: MonoBehaviour {
 //	void Update () {
 //	
 //	}
-	void FixedUpdate()
+	void Update()
 	{
 		if(Pub.istoolblow)
 		{
 			if(Input.GetKey("mouse 0")){
 				
-				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8){
+				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.2f){
 					
 				}
 				else{
@@ -47,26 +47,29 @@ public class BlowHairTail: MonoBehaviour {
 					cbezier.p3ysl+=p1force;
 				
 					Vector2 nowp=Camera.main.ScreenToWorldPoint(Input.mousePosition);
-					direction=new Vector2(center.position.x-nowp.x, center.position.y-nowp.y);
-					direction.x=Mathf.Clamp(direction.x,-1-Random.value*0.5f,1+Random.value*0.05f);
-					direction.y=Mathf.Clamp(direction.y,-1-Random.value*0.5f,1+Random.value*0.05f);
+					//direction=new Vector2(center.position.x-nowp.x, center.position.y-nowp.y);
+					direction=new Vector2(gameObject.transform.position.x-nowp.x,gameObject.transform.position.y-nowp.y);
+					direction.x=Mathf.Clamp(direction.x*0.1f,-1-Random.value*0.5f,1+Random.value*0.05f);
+					direction.y=Mathf.Clamp(direction.y*0.1f,-1-Random.value*0.5f,1+Random.value*0.05f);
 					
-					if(cbezier.p3ysl<-10)
-					{
+					print(direction.x+"//"+direction.y);
+					
+//					if(cbezier.p3ysl<-10)
+//					{
 						cbezier.p1xsl-=direction.x*p1p;
 						cbezier.p1ysl+=direction.y*p1p;	
 		
 						cbezier.p3xsl-=direction.x*p3p;
 						cbezier.p3ysl+=direction.y*p3p;	
-					}
-					else
-					{
-						cbezier.p1xsl-=direction.x*p1p;
-					    cbezier.p1ysl+=direction.y*p1p*p1ylow;	
-		
-						cbezier.p3xsl-=direction.x*p3p;
-						cbezier.p3ysl+=direction.y*p3p*p3ylow;	
-					}
+//					}
+//					else
+//					{
+//						cbezier.p1xsl-=direction.x*p1p;
+//					    cbezier.p1ysl+=direction.y*p1p*p1ylow;	
+//		
+//						cbezier.p3xsl-=direction.x*p3p;
+//						cbezier.p3ysl+=direction.y*p3p*p3ylow;	
+//					}
 					controltail.CheckMaxDis();
 				}
 			
@@ -76,7 +79,7 @@ public class BlowHairTail: MonoBehaviour {
 				if(controltail.hairlength>2)
 				{
 					//can return
-					ComeBack();
+					//ComeBack();
 				}
 				else
 				{
@@ -103,10 +106,10 @@ public class BlowHairTail: MonoBehaviour {
 	
 	void OnGUI()
 	{
-		if(GUI.Button(new  Rect(0,300,50,50),"enter"))
-		{
-			ComeBack();
-		}
+//		if(GUI.Button(new  Rect(0,300,50,50),"enter"))
+//		{
+//			ComeBack();
+//		}
 	}
 	
 	

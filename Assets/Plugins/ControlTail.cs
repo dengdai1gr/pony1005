@@ -91,8 +91,8 @@ public class ControlTail : MonoBehaviour {
 		
 		if(controlp3)
 		{
-			mybezier.p3xsl+=x;
-			mybezier.p3ysl+=y;
+			mybezier.p3xsl+=x*0.9f;
+			mybezier.p3ysl+=y*0.9f;
 			mybezier.p1xsl+=x*0.15f;
 			mybezier.p1ysl+=y*0.15f;//0.25
 			mybezier.p2xsl+=-x*1.15f;

@@ -26,13 +26,13 @@ public class BlowHair: MonoBehaviour {
 //	void Update () {
 //	
 //	}
-	void FixedUpdate()
+	void Update()
 	{
 		if(Pub.istoolblow)
 		{
 			if(Input.GetKey("mouse 0")){
 				
-				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.6f){
+				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.2f){
 					
 				}
 				else{

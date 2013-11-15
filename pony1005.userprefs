@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/ControlHair.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/ControlTail.cs">
     <Files>
-      <File FileName="Assets/Plugins/ControlHair.cs" Line="256" Column="3" />
-      <File FileName="Assets/Plugins/ControlTail.cs" Line="234" Column="23" />
+      <File FileName="Assets/Plugins/BlowHairTail.cs" Line="109" Column="5" />
+      <File FileName="Assets/Plugins/ControlTail.cs" Line="94" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
