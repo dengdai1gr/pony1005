@@ -16,12 +16,23 @@ public class ControlTail : MonoBehaviour {
 	public float hairlength=1.0f;
 	public bool isshort=false;//if hair length is too short can't cut
 	
+	//add cut down hair  fall
+	public GameObject hairfallgm;
+	AddLineRender addlinerender;
+	LineRenderer line;
+	public Material hairmat;
+	public int lengthOfLineRenderer = 35;
+	private int num=0;
+	private Vector3[] setp;
+	private GameObject hairfall; //fall hair
 	
 	void Start () {
 		
 		CutHairs.Cut+=SetHairLength;
 		mybezier=GetComponent<CBezier>();
 		CheckMaxDis();
+		////
+		setp=mybezier.vec;
 	}
 	
 	void Update () {
@@ -200,6 +211,55 @@ public class ControlTail : MonoBehaviour {
 		}		
 		CheckMaxDis();
 	}
+	
+	
+	
+		void CutDownHair()//cut hair fall
+	{
+		hairfall=Instantiate(hairfallgm,gameObject.transform.position ,gameObject.transform.rotation) as GameObject;
+		hairfall.transform.parent=gameObject.transform.parent.parent;
+		addlinerender=hairfall.GetComponent<AddLineRender>();
+		if(!hairfall.GetComponent<LineRenderer>())
+		{	
+			line =hairfall.AddComponent<LineRenderer>();
+		}
+		line.SetWidth(0.5f, 0.7f);
+		line.useWorldSpace = false;
+		line.SetVertexCount(lengthOfLineRenderer);
+		line.material=hairmat;
+		for(int i=0; i<lengthOfLineRenderer; i++)
+		{
+			if(i<num)
+			{
+				setp[i]=setp[num];
+			}
+			else
+			{
+				//setp[i]=cbezier.vec[i];
+			}
+			line.SetPosition(i, setp[i]);
+		}
+		Destroy(hairfall,2f);	
+	}
+	
+	
+	void Rec(float n)
+	{
+		num=Mathf.RoundToInt(n*35);
+		//print (num);
+		CutDownHair();
+		float movetime=1.5f+n*0.6f;
+		Move(movetime);
+	}
+	
+	void Move(float times)
+	{
+		Hashtable htb=new Hashtable ();
+		htb.Add("ease", LeanTweenType.easeInOutBack);//easeInOutBack    easeInCirc
+		LeanTween.moveLocal(hairfall,new Vector3(-7f,-22f,10.3f),times,htb);//-30,2.98f,15.92f
+	}
+	
+	
 	
 	void OnDestroy()
 	{

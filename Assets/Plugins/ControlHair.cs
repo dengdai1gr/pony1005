@@ -16,12 +16,24 @@ public class ControlHair : MonoBehaviour {
 	public float hairlength=1.0f;
 	public bool isshort=false;//if hair length is too short can't cut
 	
+	//add cut down hair  fall
+	public GameObject hairfallgm;
+	AddLineRender addlinerender;
+	LineRenderer line;
+	public Material hairmat;
+	public int lengthOfLineRenderer = 35;
+	private int num=0;
+	private Vector3[] setp;
+	private GameObject hairfall; //fall hair
+	
 	
 	void Start () {
 		
 		CutHairs.Cut+=SetHairLength;
 		mybezier=GetComponent<CBezier>();
 		CheckMaxDis();
+		////
+		setp=mybezier.vec;
 	}
 	
 	void Update () {
@@ -53,8 +65,8 @@ public class ControlHair : MonoBehaviour {
 		x=0;
 		y=0;
 		////x=startp.x-preDrag1.x;
-		x=(preDrag1.x-startp.x)*1.3f;
-		y=(startp.y-preDrag1.y)*1.3f;
+		x=(preDrag1.x-startp.x)*1.5f;
+		y=(startp.y-preDrag1.y)*1.5f;
 		//x=preDrag1.x-startp.x;
 		//y=startp.y-preDrag1.y;	
 //		print (x+"//"+y);
@@ -62,8 +74,8 @@ public class ControlHair : MonoBehaviour {
 		{
 			mybezier.p1xsl+=x;
 			mybezier.p1ysl+=y;				
-			mybezier.p3xsl+=x*0.6f;//0.75
-			mybezier.p3ysl+=y*0.6f;
+			mybezier.p3xsl+=x*0.75f;//0.75
+			mybezier.p3ysl+=y*0.75f;
 			mybezier.p2xsl+=x*0.5f;//0.5
 			mybezier.p2ysl+=y*0.5f;		
 		}
@@ -72,20 +84,20 @@ public class ControlHair : MonoBehaviour {
 		{
 			mybezier.p2xsl+=x;
 			mybezier.p2ysl+=y;	
-			mybezier.p3xsl+=x*0.5f;//0.5
-			mybezier.p3ysl+=y*0.5f;
-			mybezier.p1xsl+=x*0.3f;//0.5
-			mybezier.p1ysl+=y*0.3f;
+			mybezier.p3xsl+=x*0.6f;//0.5
+			mybezier.p3ysl+=y*0.6f;
+			mybezier.p1xsl+=x*0.4f;//0.5
+			mybezier.p1ysl+=y*0.4f;
 		}
 		
 		if(controlp3)
 		{
 			mybezier.p3xsl+=x;
 			mybezier.p3ysl+=y;
-			mybezier.p1xsl+=x*0.15f;
-			mybezier.p1ysl+=y*0.15f;//0.25
-			mybezier.p2xsl+=-x*1.15f;
-			mybezier.p2ysl+=-y*1.15f;	
+			mybezier.p1xsl+=x*0.2f;
+			mybezier.p1ysl+=y*0.2f;//0.25
+			mybezier.p2xsl+=-x*1;
+			mybezier.p2ysl+=-y*1;	
 		}	
 	}
 	
@@ -196,6 +208,56 @@ public class ControlHair : MonoBehaviour {
 		}		
 		CheckMaxDis();
 	}
+	
+	
+
+	void CutDownHair()//cut hair fall
+	{
+		hairfall=Instantiate(hairfallgm,gameObject.transform.position ,gameObject.transform.rotation) as GameObject;
+		hairfall.transform.parent=gameObject.transform.parent.parent;
+		addlinerender=hairfall.GetComponent<AddLineRender>();
+		if(!hairfall.GetComponent<LineRenderer>())
+		{	
+			line =hairfall.AddComponent<LineRenderer>();
+		}
+		line.SetWidth(0.5f, 0.7f);
+		line.useWorldSpace = false;
+		line.SetVertexCount(lengthOfLineRenderer);
+		line.material=hairmat;
+		for(int i=0; i<lengthOfLineRenderer; i++)
+		{
+			if(i<num)
+			{
+				setp[i]=setp[num];
+			}
+			else
+			{
+				//setp[i]=cbezier.vec[i];
+			}
+			line.SetPosition(i, setp[i]);
+		}
+		Destroy(hairfall,2f);	
+	}
+	
+	
+	void Rec(float n)//cut hair little n~0.999  
+	{
+		num=Mathf.RoundToInt(n*35);
+		CutDownHair();
+		float movetime=1.5f+n*0.6f;
+		Move(movetime);
+		
+	}
+	
+	void Move(float times)
+	{
+		print (times);
+		Hashtable htb=new Hashtable ();
+		htb.Add("ease", LeanTweenType.easeInOutBack);//easeInOutBack    easeInCirc
+		LeanTween.moveLocal(hairfall,new Vector3(8.1f,-15f,9.6f),times,htb);//-30,2.98f,15.92f
+	}
+	
+	
 	
 	void OnDestroy()
 	{

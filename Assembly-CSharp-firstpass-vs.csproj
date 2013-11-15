@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Plugins\AddLineRender.cs" />
      <Compile Include="Assets\Plugins\BlowHair.cs" />
      <Compile Include="Assets\Plugins\BlowHairTail.cs" />
      <Compile Include="Assets\Plugins\BlowTailCheck.cs" />

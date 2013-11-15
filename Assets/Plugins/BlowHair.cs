@@ -6,15 +6,15 @@ public class BlowHair: MonoBehaviour {
 
 	CBezier cbezier;
 	ControlHair controlhair;
-	public Transform center;
+	//public Transform center;
 	private Vector2 direction;
 	
-	public float p1p=0.5f;
-	public float p3p=1.5f;
+	private float p1p=0.5f;
+	private float p3p=1.5f;
 	
 	
-	public float p1ylow=0.9f;
-	public float p3ylow=0.9f;
+	private float p1ylow=0.9f;
+	private float p3ylow=0.9f;
 	
 	void Start () {
 	
@@ -32,7 +32,7 @@ public class BlowHair: MonoBehaviour {
 		{
 			if(Input.GetKey("mouse 0")){
 				
-				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8){
+				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.6f){
 					
 				}
 				else{
@@ -46,7 +46,8 @@ public class BlowHair: MonoBehaviour {
 					cbezier.p3ysl+=p1force;
 				
 					Vector2 nowp=Camera.main.ScreenToWorldPoint(Input.mousePosition);
-					direction=new Vector2(center.position.x-nowp.x, center.position.y-nowp.y);
+					//direction=new Vector2(center.position.x-nowp.x, center.position.y-nowp.y);
+					direction=new Vector2(gameObject.transform.position.x-nowp.x,gameObject.transform.position.y-nowp.y);
 					direction.x=Mathf.Clamp(direction.x,-1-Random.value*0.5f,1+Random.value*0.05f);
 					direction.y=Mathf.Clamp(direction.y,-1-Random.value*0.5f,1+Random.value*0.05f);
 					

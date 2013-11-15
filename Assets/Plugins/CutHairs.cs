@@ -60,6 +60,7 @@ public class CutHairs : MonoBehaviour {
 					}
 					else
 					{		
+						hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
 						upmesh(hit.collider.gameObject.name);//remove mesh collider
 						Cut(hit.collider.gameObject.name,hairlength);
 					}
@@ -88,6 +89,7 @@ public class CutHairs : MonoBehaviour {
 					}
 					else
 					{				
+						hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
 						upmesh(hit.collider.gameObject.name);
 						Cut(hit.collider.gameObject.name,hairlength);
 					

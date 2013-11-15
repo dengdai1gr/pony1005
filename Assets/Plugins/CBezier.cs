@@ -5,7 +5,7 @@ public class CBezier : MonoBehaviour
 {
 
     private Bezier myBezier;
-	public CustomLineRenderer line;
+ 	CustomLineRenderer line;
 	public Material material;
 	public float p1xsl;
 	public float p1ysl;
@@ -15,15 +15,15 @@ public class CBezier : MonoBehaviour
 	public float p3ysl;	
 	public GameObject[] cubes;	
 	public int linecount=45;
-	public float startw=1.5f;
-	public float endw=1.5f;
-	
+	//public float startw=1.5f;
+	//public float endw=1.5f;
+	public Vector3[] vec;
 	
 	void Start(){
 
 		line = GetComponent<CustomLineRenderer>();
 		line.SetVertexCount(linecount);
-		line.SetWidth(startw,endw);
+		line.SetWidth(1.5f,1.5f);
 		line.renderer.sharedMaterial=material;
 		
     }
@@ -37,58 +37,60 @@ public class CBezier : MonoBehaviour
        	myBezier = new Bezier( new Vector3( 0, 0, 0f ), new Vector3(p1xsl,p1ysl,0) ,new Vector3(p2xsl,p2ysl,0), new Vector3( p3xsl, p3ysl, 0f ) );
 		for(int i =0; i < linecount; i++)
 		{
-			Vector3 vec = myBezier.GetPointAtTime( (float)(i *(1.0f/linecount)) );		
-			line.SetPosition(i,vec);
-				vec.z=0;
+//			Vector3 vec = myBezier.GetPointAtTime( (float)(i *(1.0f/linecount)) );		
+//			line.SetPosition(i,vec);
+//			vec.z=0;
 			//Debug.DrawLine(vec, Camera.mainCamera.transform.position);
-			
+			vec[i] = myBezier.GetPointAtTime( (float)(i *(1.0f/linecount)) );		
+			line.SetPosition(i,vec[i]);
+			vec[i].z=0;
 			
 			if(i==3)
 			{		
-				cubes[0].transform.localPosition=vec;
+				cubes[0].transform.localPosition=vec[i];
 			}
 			if(i==6)
 			{		
-				cubes[1].transform.localPosition=vec;
+				cubes[1].transform.localPosition=vec[i];
 			}
 			if(i==9)
 			{		
-				cubes[2].transform.localPosition=vec;
+				cubes[2].transform.localPosition=vec[i];
 			}
 			if(i==12)
 			{		
-				cubes[3].transform.localPosition=vec;
+				cubes[3].transform.localPosition=vec[i];
 			}
 			
 			if(i==15)
 			{		
-				cubes[4].transform.localPosition=vec;
+				cubes[4].transform.localPosition=vec[i];
 			}	
 			if(i==18)
 			{		
-				cubes[5].transform.localPosition=vec;
+				cubes[5].transform.localPosition=vec[i];
 			}
 			if(i==21)
 			{		
-				cubes[6].transform.localPosition=vec;
+				cubes[6].transform.localPosition=vec[i];
 			}
 			if(i==24)
 			{		
-				cubes[7].transform.localPosition=vec;
+				cubes[7].transform.localPosition=vec[i];
 			}
 			if(i==27)
 			{		
-				cubes[8].transform.localPosition=vec;
+				cubes[8].transform.localPosition=vec[i];
 			}
 			
 			if(i==30)
 			{		
-				cubes[9].transform.localPosition=vec;
+				cubes[9].transform.localPosition=vec[i];
 			}
 			
 			if(i==34)
 			{		
-				cubes[10].transform.localPosition=vec;
+				cubes[10].transform.localPosition=vec[i];
 			}
 			
 //			if(i==39)

@@ -70,9 +70,45 @@ public class BlowHairTail: MonoBehaviour {
 					controltail.CheckMaxDis();
 				}
 			
+		
+			if(Input.GetKeyUp("mouse 0"))
+			{
+				if(controltail.hairlength>2)
+				{
+					//can return
+					ComeBack();
+				}
+				else
+				{
+			
+				}
 			}
 		}
+		}
 	}
+	
+
+	void ComeBack()
+	{
+		Hashtable htb= new Hashtable ();
+		htb.Add("ease",LeanTweenType.easeOutQuint);
+		LeanTween.value(gameObject,Recb,cbezier.p3ysl,-12,2f,htb);			
+			
+		controltail.CheckMaxDis();
+	}
+	void Recb(float a)
+	{
+		cbezier.p3ysl=a;
+	}
+	
+	void OnGUI()
+	{
+		if(GUI.Button(new  Rect(0,300,50,50),"enter"))
+		{
+			ComeBack();
+		}
+	}
+	
 	
 	
 	void ReceiveChange()
@@ -85,10 +121,7 @@ public class BlowHairTail: MonoBehaviour {
 		//p1ylow=0.4f;
 		//p3ylow=0.4f;
 	}
-	
-	
 
-	
 }
 
 
