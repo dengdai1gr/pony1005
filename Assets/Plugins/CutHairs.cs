@@ -51,7 +51,7 @@ public class CutHairs : MonoBehaviour {
 			{
 	    		startto=hit.textureCoord;
 				hairlength=Mathf.Round(startto.x*100)/100.0f;
-				if(hairlength>0.975f){}
+				if(hairlength>0.985f){}
 				else
 				{
 					if(hairlength<0.22f)
@@ -60,7 +60,7 @@ public class CutHairs : MonoBehaviour {
 					}
 					else
 					{		
-						hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
+						//hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
 						upmesh(hit.collider.gameObject.name);//remove mesh collider
 						Cut(hit.collider.gameObject.name,hairlength);
 					}
@@ -89,7 +89,7 @@ public class CutHairs : MonoBehaviour {
 					}
 					else
 					{				
-						hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
+						//hit.collider.gameObject.SendMessage("Rec",hairlength);//cut hair length
 						upmesh(hit.collider.gameObject.name);
 						Cut(hit.collider.gameObject.name,hairlength);
 					

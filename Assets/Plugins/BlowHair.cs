@@ -32,7 +32,7 @@ public class BlowHair: MonoBehaviour {
 		{
 			if(Input.GetKey("mouse 0")){
 				
-				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.2f){
+				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.3f){
 					
 				}
 				else{

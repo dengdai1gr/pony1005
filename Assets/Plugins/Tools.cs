@@ -23,6 +23,10 @@ public class Tools : MonoBehaviour {
 	
 	void Update () {
 	
+		
+		if(Input.touchCount<1 && !Input.GetKey("mouse 0"))
+				return;
+		
 		if(Input.GetKeyDown("mouse 0")){
 			
 			if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit,toollayer.value)){			
@@ -91,7 +95,8 @@ public class Tools : MonoBehaviour {
 	{
 		foreach(GameObject hair in gm)
 		{
-			Destroy(hair.GetComponent<MeshCollider>());
+			if(hair.GetComponent<MeshCollider>())
+				Destroy(hair.GetComponent<MeshCollider>());
 		}
 	}
 	
@@ -109,6 +114,14 @@ public class Tools : MonoBehaviour {
 		{
 			hair.SetActiveRecursively(true);
 		}
+	}
+	
+	void PlayAnimation()
+	{
+		HitTool(0);
+		ChangeImg("no");
+		RemoveControl();
+		RemoveMesh();
 	}
 	
 }

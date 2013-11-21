@@ -1,5 +1,7 @@
 #pragma strict
 
+var toolgm:GameObject;
+
 function Start () {
 
 }
@@ -32,6 +34,9 @@ function OnGUI()
 
 function PlayAnimation1()
 {
+	toolgm.SendMessage("PlayAnimation");
+	yield WaitForSeconds(0.1f);
+	
 	var pony:GameObject= GameObject.Find("PonyAnimationTest_02"); 
 	pony.animation.Play("Take03");
 	yield WaitForSeconds(pony.animation.clip.length*4);
@@ -40,6 +45,9 @@ function PlayAnimation1()
 
 function PlayAnimation2()
 {
+	toolgm.SendMessage("PlayAnimation");
+	yield WaitForSeconds(0.1f);
+	
 	var pony:GameObject= GameObject.Find("PonyAnimationTest_02"); 
 	pony.animation.Play("Take02");
 	yield WaitForSeconds(pony.animation.clip.length*4);

@@ -44,10 +44,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\AddLineRender.cs" />
      <Compile Include="Assets\Plugins\BlowHair.cs" />
      <Compile Include="Assets\Plugins\BlowHairTail.cs" />
-     <Compile Include="Assets\Plugins\BlowTailCheck.cs" />
      <Compile Include="Assets\Plugins\CBezier.cs" />
      <Compile Include="Assets\Plugins\CamHitHair.cs" />
      <Compile Include="Assets\Plugins\ControlHair.cs" />
@@ -62,11 +60,10 @@
      <Compile Include="Assets\Plugins\TrailRend.cs" />
      <Compile Include="Assets\Plugins\UpdateMesh.cs" />
      <Compile Include="Assets\Plugins\script\Bezier.cs" />
-     <Compile Include="Assets\Plugins\script\Fps.cs" />
      <Compile Include="Assets\Plugins\script\FpsShow.cs" />
-     <Compile Include="Assets\Plugins\test\TestDownTail.cs" />
+     <Compile Include="Assets\Plugins\test\AddLineRender.cs" />
      <Compile Include="Assets\Plugins\test\ToolBrushTest.cs" />
-     <None Include="Assets\Fbx\NewShader.shader" />
+     <None Include="Assets\Fbx\shader\NewShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,15 +6,11 @@ public class BlowHairTail: MonoBehaviour {
 
 	CBezier cbezier;
 	ControlTail controltail;
-	//public Transform center;
+	public Transform center;
 	private Vector2 direction;
-	
-	public float p1p=0.4f;
-	public float p3p=1.5f;
-	
-	
-	public float p1ylow=0.4f;
-	public float p3ylow=0.4f;
+	private Vector2 direction2;
+	private float distance;
+	private float randoms;
 	
 	void Start () {
 	
@@ -23,107 +19,87 @@ public class BlowHairTail: MonoBehaviour {
 		
 	}
 
-//	void Update () {
-//	
-//	}
 	void Update()
 	{
 		if(Pub.istoolblow)
 		{
+			
 			if(Input.GetKey("mouse 0")){
 				
-				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.2f){
-					
-				}
+				if(Camera.mainCamera.ScreenToWorldPoint(Input.mousePosition).y<-8.5f){}
 				else{
 				
 					float p1force;
-					p1force=Random.value*p1p;//0.5
-					cbezier.p1xsl+=p1force;
-					cbezier.p1ysl+=p1force;
-					
-					p1force=Random.value*p1p;//0.6
-					cbezier.p3xsl+=p1force;
-					cbezier.p3ysl+=p1force;
 				
-					Vector2 nowp=Camera.main.ScreenToWorldPoint(Input.mousePosition);
-					//direction=new Vector2(center.position.x-nowp.x, center.position.y-nowp.y);
-					direction=new Vector2(gameObject.transform.position.x-nowp.x,gameObject.transform.position.y-nowp.y);
-					direction.x=Mathf.Clamp(direction.x*0.1f,-1-Random.value*0.5f,1+Random.value*0.05f);
-					direction.y=Mathf.Clamp(direction.y*0.1f,-1-Random.value*0.5f,1+Random.value*0.05f);
+					Vector2 mousep=Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					distance=Vector2.Distance(mousep,new Vector2(center.position.x,center.position.y));
+					if(distance<4f)
+						distance=4f;
 					
-					print(direction.x+"//"+direction.y);
+					direction=new Vector2(center.position.x-mousep.x, center.position.y-mousep.y);
+					direction2=direction;
 					
-//					if(cbezier.p3ysl<-10)
-//					{
-						cbezier.p1xsl-=direction.x*p1p;
-						cbezier.p1ysl+=direction.y*p1p;	
-		
-						cbezier.p3xsl-=direction.x*p3p;
-						cbezier.p3ysl+=direction.y*p3p;	
-//					}
-//					else
-//					{
-//						cbezier.p1xsl-=direction.x*p1p;
-//					    cbezier.p1ysl+=direction.y*p1p*p1ylow;	
-//		
-//						cbezier.p3xsl-=direction.x*p3p;
-//						cbezier.p3ysl+=direction.y*p3p*p3ylow;	
-//					}
-					controltail.CheckMaxDis();
-				}
+					direction.x=direction.x*(2.5f/distance);
+					direction.y=direction.y*(2.5f/distance);  //max is 2.5
+					direction2.x=direction2.x*(2.5f/distance);
+					direction2.y=direction2.y*(2.5f/distance);
+					
+					//randoms=0.4f*(0.5f-Random.value);
+					
+					
+					direction.y= direction.y- 0.15f*distance  +  (0.01f*distance+0.5f +randoms)*Mathf.Sin(Time.time* (240/distance +randoms*10) );
+					direction.x= direction.x+                    (0.01f*distance+0.5f +randoms)*Mathf.Sin(Time.time* (240/distance +randoms*10) );
+				
+					
+					direction2.y= direction2.y- 0.15f*distance  +  (0.01f*distance+0.5f +randoms)*Mathf.Sin(180+Time.time* (200/distance +randoms*10) );
+					direction2.x= direction2.x+                    (0.01f*distance+0.5f +randoms)*Mathf.Sin(180+Time.time* (200/distance +randoms*10) );
+					
+	
+					cbezier.p3xsl-=direction.x;
+					cbezier.p3ysl+=direction.y;	
+	
+					cbezier.p2xsl-=direction2.x;
+					cbezier.p2ysl+=direction2.y;	
+				
 			
 		
-			if(Input.GetKeyUp("mouse 0"))
-			{
-				if(controltail.hairlength>2)
-				{
-					//can return
-					//ComeBack();
-				}
-				else
-				{
-			
+					
+				//direction.x=Mathf.Clamp(direction.x,-25f,25);
+				//direction.y=Mathf.Clamp(direction.y,-25f,25);
+				
+				
+				controltail.CheckMaxDis();
 				}
 			}
-		}
+			if(Input.GetKeyUp("mouse 0")){
+				
+			}
+			if(Input.GetKeyDown("mouse 0")){
+				randoms=0.4f*(0.5f-Random.value);
+			}
 		}
 	}
-	
 
-	void ComeBack()
-	{
-		Hashtable htb= new Hashtable ();
-		htb.Add("ease",LeanTweenType.easeOutQuint);
-		LeanTween.value(gameObject,Recb,cbezier.p3ysl,-12,2f,htb);			
-			
-		controltail.CheckMaxDis();
-	}
-	void Recb(float a)
-	{
-		cbezier.p3ysl=a;
-	}
-	
-	void OnGUI()
-	{
-//		if(GUI.Button(new  Rect(0,300,50,50),"enter"))
-//		{
-//			ComeBack();
-//		}
-	}
 	
 	
 	
-	void ReceiveChange()
-	{
-		//p1ylow=0.9f;
-		//p3ylow=0.9f;
-	}
-	void ReceiveBack()
-	{
-		//p1ylow=0.4f;
-		//p3ylow=0.4f;
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	void OnGUI()
+//	{
+//		GUI.Label(new Rect(0,300,200,30),"Dis"+distance);
+//		GUI.Label(new Rect(0,340,200,30),"x:"+direction.x);
+//		GUI.Label(new Rect(0,380,200,30),"y:"+direction.y);
+//	}
+	
+	
 
 }
 
@@ -131,10 +107,5 @@ public class BlowHairTail: MonoBehaviour {
 
 
 
-	
-	
-	
-	
-
-
-
+//cbezier.p1xsl-=direction.x;
+//cbezier.p1ysl+=direction.y;	

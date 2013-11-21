@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\script\GUIs.js" />
-     <None Include="Assets\Fbx\NewShader.shader" />
+     <None Include="Assets\Fbx\shader\NewShader.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">

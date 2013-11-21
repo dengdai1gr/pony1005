@@ -24,7 +24,7 @@ public class CamHitHair : MonoBehaviour {
 			//	return;	
 			if (Input.GetKey ("mouse 0")) {
 			//hits=Physics.RaycastAll(gameObject.camera.ScreenPointToRay(Input.mousePosition),100,hairlayer.value);
-			hits=Physics.SphereCastAll(gameObject.camera.ScreenPointToRay(Input.mousePosition),0.5f,100,hairlayer.value);
+			hits=Physics.SphereCastAll(gameObject.camera.ScreenPointToRay(Input.mousePosition),0.4f,100,hairlayer.value);
 			if(hits.Length>0){
 				
 				foreach(RaycastHit hit in hits)

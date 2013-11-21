@@ -10,15 +10,14 @@ public class ControlHair : MonoBehaviour {
 	private float y;
 	private RaycastHit hit;
 	CBezier mybezier;
-	public bool controlp1=false;
-	public bool controlp2=false;
-	public bool controlp3=false;
+	private bool controlp1=false;
+	private bool controlp2=false;
+	private bool controlp3=false;
 	public float hairlength=1.0f;
-	public bool isshort=false;//if hair length is too short can't cut
+	private bool isshort=false;//if hair length is too short can't cut
 	
 	//add cut down hair  fall
 	public GameObject hairfallgm;
-	AddLineRender addlinerender;
 	LineRenderer line;
 	public Material hairmat;
 	public int lengthOfLineRenderer = 35;
@@ -42,22 +41,23 @@ public class ControlHair : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		
-		DoIt();
-		CheckMaxDis();
-		
-		if (Input.GetKeyUp ("mouse 0")) 
+		if(Pub.istoolbrush)
 		{
-			controlp1=false;	
-			controlp2=false;	
-			controlp3=false;
-			startp=new Vector2(0,0);
-			preDrag1=new Vector2(0,0);
-		}
-		preDrag1=startp;	
+			
+			DoIt();
+			CheckMaxDis();
 		
+			if (Input.GetKeyUp ("mouse 0")) 
+			{
+				controlp1=false;	
+				controlp2=false;	
+				controlp3=false;
+				startp=new Vector2(0,0);
+				preDrag1=new Vector2(0,0);
+			}
+			preDrag1=startp;		
+		}
 	}
-
 
 	void DoIt() //control point p1p2p3
 	{		
@@ -74,8 +74,8 @@ public class ControlHair : MonoBehaviour {
 		{
 			mybezier.p1xsl+=x;
 			mybezier.p1ysl+=y;				
-			mybezier.p3xsl+=x*0.75f;//0.75
-			mybezier.p3ysl+=y*0.75f;
+			mybezier.p3xsl+=x*0.6f;//0.75
+			mybezier.p3ysl+=y*0.6f;
 			mybezier.p2xsl+=x*0.5f;//0.5
 			mybezier.p2ysl+=y*0.5f;		
 		}
@@ -151,7 +151,7 @@ public class ControlHair : MonoBehaviour {
 	
 	void CheckDis()
 	{
-		float dis = Vector2.Distance(startp,new Vector2(mybezier.cubes[6].transform.position.x,mybezier.cubes[6].transform.position.y));
+		float dis = Vector2.Distance(startp,new Vector2(mybezier.cubes[3].transform.position.x,mybezier.cubes[3].transform.position.y));
 		//print(dis);
 		if(dis>hairlength*4f)//hairlength 1 = 1.7 dis
 			TooFar();
@@ -172,12 +172,21 @@ public class ControlHair : MonoBehaviour {
 		else{
 			isshort=true;
 		}
+		//change mat when hair short
+		if(hairlength<1.5 )
+		{
+			//mybezier.ChangeMatM();
+			gameObject.SendMessage("ChangeMatM");
+		}
+
 	}
 	
 	void SetHairLength(string myname, float numb)//delegate cut hair
 	{
 		if(isshort){
 			if(myname==gameObject.name){
+				
+				Rec(numb);//instantiate cut hair fall and cut hairlength
 				hairlength*=numb;
 				CheckMaxDis();
 				Invoke("AddM",0.2f);
@@ -200,7 +209,7 @@ public class ControlHair : MonoBehaviour {
 	{
 		if(hairlength<2.6f){
 			
-			hairlength+=0.03f;
+			hairlength+=0.045f;
 			mybezier.p1xsl=mybezier.p1xsl*1.05f;
 			mybezier.p1ysl=mybezier.p1ysl*1.05f;
 			mybezier.p3xsl=mybezier.p3xsl*1.1f;
@@ -215,12 +224,11 @@ public class ControlHair : MonoBehaviour {
 	{
 		hairfall=Instantiate(hairfallgm,gameObject.transform.position ,gameObject.transform.rotation) as GameObject;
 		hairfall.transform.parent=gameObject.transform.parent.parent;
-		addlinerender=hairfall.GetComponent<AddLineRender>();
 		if(!hairfall.GetComponent<LineRenderer>())
 		{	
 			line =hairfall.AddComponent<LineRenderer>();
 		}
-		line.SetWidth(0.5f, 0.7f);
+		line.SetWidth(0.7f, 0.7f);
 		line.useWorldSpace = false;
 		line.SetVertexCount(lengthOfLineRenderer);
 		line.material=hairmat;
@@ -242,7 +250,7 @@ public class ControlHair : MonoBehaviour {
 	
 	void Rec(float n)//cut hair little n~0.999  
 	{
-		num=Mathf.RoundToInt(n*35);
+		num=Mathf.RoundToInt(n*lengthOfLineRenderer);
 		CutDownHair();
 		float movetime=1.5f+n*0.6f;
 		Move(movetime);
@@ -251,7 +259,7 @@ public class ControlHair : MonoBehaviour {
 	
 	void Move(float times)
 	{
-		print (times);
+//		print (times);
 		Hashtable htb=new Hashtable ();
 		htb.Add("ease", LeanTweenType.easeInOutBack);//easeInOutBack    easeInCirc
 		LeanTween.moveLocal(hairfall,new Vector3(8.1f,-15f,9.6f),times,htb);//-30,2.98f,15.92f

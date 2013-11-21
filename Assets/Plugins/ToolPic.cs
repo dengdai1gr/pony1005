@@ -11,7 +11,6 @@ public class ToolPic : MonoBehaviour {
 		gameObject.renderer.material.mainTexture=img;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 	}

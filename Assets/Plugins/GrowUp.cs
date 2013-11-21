@@ -12,7 +12,7 @@ public class GrowUp : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
 		if(Pub.ispilatory)
 		{
@@ -28,7 +28,7 @@ public class GrowUp : MonoBehaviour {
 		{
 			nowp=Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			dis=Vector2.Distance(nowp,new Vector2(g.transform.position.x,g.transform.position.y));
-			if(dis<1.7f)
+			if(dis<1.8f)
 			{
 				g.SendMessage("HairLengthAdd");
 			}
