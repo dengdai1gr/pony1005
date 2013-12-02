@@ -31,6 +31,7 @@ public class AddLineRender : MonoBehaviour {
 
 		gameObject.transform.position=parentgm.transform.position;
 		gameObject.transform.rotation=parentgm.transform.rotation;
+		gameObject.transform.localScale=parentgm.transform.localScale;
 		
 		if(!gameObject.GetComponent<LineRenderer>())
 		{	

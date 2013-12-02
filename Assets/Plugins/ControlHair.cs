@@ -92,12 +92,12 @@ public class ControlHair : MonoBehaviour {
 		
 		if(controlp3)
 		{
-			mybezier.p3xsl+=x*0.9f;
-			mybezier.p3ysl+=y*0.9f;
-			mybezier.p1xsl+=x*0.2f;
-			mybezier.p1ysl+=y*0.2f;//0.25
-			mybezier.p2xsl+=-x*1;
-			mybezier.p2ysl+=-y*1;	
+			mybezier.p3xsl+=x*1f;
+			mybezier.p3ysl+=y*1f;
+			mybezier.p1xsl+=x*0.1f;
+			mybezier.p1ysl+=y*0.1f;//0.25
+			mybezier.p2xsl+=-x*1.5f;//1
+			mybezier.p2ysl+=-y*1.5f;	
 		}	
 	}
 	
@@ -199,8 +199,6 @@ public class ControlHair : MonoBehaviour {
 		if(!gameObject.GetComponent<MeshCollider>())
 		{	
 			gameObject.AddComponent<MeshCollider>();	
-			//gameObject.SetActiveRecursively(false);
-			//gameObject.SetActive(true);	
 		}
 	}
 	
@@ -224,6 +222,7 @@ public class ControlHair : MonoBehaviour {
 	{
 		hairfall=Instantiate(hairfallgm,gameObject.transform.position ,gameObject.transform.rotation) as GameObject;
 		hairfall.transform.parent=gameObject.transform.parent.parent;
+		hairfall.transform.localScale=gameObject.transform.localScale;
 		if(!hairfall.GetComponent<LineRenderer>())
 		{	
 			line =hairfall.AddComponent<LineRenderer>();

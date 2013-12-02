@@ -90,12 +90,12 @@ public class ControlTail : MonoBehaviour {
 		
 		if(controlp3)
 		{
-			mybezier.p3xsl+=x*0.9f;
-			mybezier.p3ysl+=y*0.9f;
+			mybezier.p3xsl+=x*1;
+			mybezier.p3ysl+=y*1;
 			//mybezier.p1xsl+=x*0.15f;
 			//mybezier.p1ysl+=y*0.15f;//0.25
-			mybezier.p2xsl+=-x*1.15f;
-			mybezier.p2ysl+=-y*1.15f;	
+			mybezier.p2xsl+=-x*1.25f;
+			mybezier.p2ysl+=-y*1.25f;	
 		}	
 	}
 	
@@ -223,6 +223,7 @@ public class ControlTail : MonoBehaviour {
 	{
 		hairfall=Instantiate(hairfallgm,gameObject.transform.position ,gameObject.transform.rotation) as GameObject;
 		hairfall.transform.parent=gameObject.transform.parent.parent;
+		hairfall.transform.localScale=gameObject.transform.localScale;
 		if(!hairfall.GetComponent<LineRenderer>())
 		{	
 			line =hairfall.AddComponent<LineRenderer>();

@@ -1,14 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/script/FpsShow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/ControlHair.cs">
     <Files>
-      <File FileName="Assets/Plugins/BlowHairTail.cs" Line="55" Column="98" />
-      <File FileName="Assets/Plugins/CBezier.cs" Line="105" Column="4" />
-      <File FileName="Assets/Plugins/ControlHair.cs" Line="44" Column="3" />
-      <File FileName="Assets/Plugins/ControlTail.cs" Line="59" Column="3" />
-      <File FileName="Assets/Plugins/CutHairs.cs" Line="62" Column="9" />
-      <File FileName="Assets/Plugins/GrowUp.cs" Line="17" Column="3" />
-      <File FileName="Assets/Plugins/script/FpsShow.cs" Line="42" Column="5" />
+      <File FileName="Assets/Plugins/ControlHair.cs" Line="47" Column="1" />
+      <File FileName="Assets/Plugins/ControlTail.cs" Line="44" Column="4" />
+      <File FileName="Assets/Plugins/CutHairs.cs" Line="30" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

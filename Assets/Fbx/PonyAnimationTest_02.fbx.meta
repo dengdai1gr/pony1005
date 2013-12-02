@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: 33756cacd7ae64ded8702d761131c3b6
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: PonyExport:Arm1Env
+    100004: PonyExport:Arm1Env1
+    100006: PonyExport:Arm2Env
+    100008: PonyExport:Arm2Env1
+    100010: PonyExport:Body
+    100012: PonyExport:ear1
+    100014: PonyExport:Ear1Env
+    100016: PonyExport:ear2
+    100018: PonyExport:Ear2Env
+    100020: PonyExport:FrontLeg
+    100022: PonyExport:FrontLeg1
+    100024: PonyExport:HairPOS
+    100026: PonyExport:HairPOS1
+    100028: PonyExport:HairPOS2
+    100030: PonyExport:HairPOS3
+    100032: PonyExport:HairPOS4
+    100034: PonyExport:HairPOS5
+    100036: PonyExport:HairPOS6
+    100038: PonyExport:HairPOS7
+    100040: PonyExport:HairPOS8
+    100042: PonyExport:HairPOS9
+    100044: PonyExport:HeadEnv
+    100046: PonyExport:HindLeg
+    100048: PonyExport:Hindleg1
+    100050: PonyExport:Leg1Env
+    100052: PonyExport:Leg1Env1
+    100054: PonyExport:Leg2Env
+    100056: PonyExport:Leg2Env1
+    100058: PonyExport:Leg3Env
+    100060: PonyExport:Leg3Env1
+    100062: PonyExport:NeckEnv1
+    100064: PonyExport:NeckEnv2
+    100066: PonyExport:NeckEnv3
+    100068: PonyExport:SpineEnv1
+    100070: PonyExport:SpineEnv2
+    100072: PonyExport:SpineEnv3
+    100074: PonyExport:SpineEnv4
+    400000: //RootNode
+    400002: PonyExport:Arm1Env
+    400004: PonyExport:Arm1Env1
+    400006: PonyExport:Arm2Env
+    400008: PonyExport:Arm2Env1
+    400010: PonyExport:Body
+    400012: PonyExport:ear1
+    400014: PonyExport:Ear1Env
+    400016: PonyExport:ear2
+    400018: PonyExport:Ear2Env
+    400020: PonyExport:FrontLeg
+    400022: PonyExport:FrontLeg1
+    400024: PonyExport:HairPOS
+    400026: PonyExport:HairPOS1
+    400028: PonyExport:HairPOS2
+    400030: PonyExport:HairPOS3
+    400032: PonyExport:HairPOS4
+    400034: PonyExport:HairPOS5
+    400036: PonyExport:HairPOS6
+    400038: PonyExport:HairPOS7
+    400040: PonyExport:HairPOS8
+    400042: PonyExport:HairPOS9
+    400044: PonyExport:HeadEnv
+    400046: PonyExport:HindLeg
+    400048: PonyExport:Hindleg1
+    400050: PonyExport:Leg1Env
+    400052: PonyExport:Leg1Env1
+    400054: PonyExport:Leg2Env
+    400056: PonyExport:Leg2Env1
+    400058: PonyExport:Leg3Env
+    400060: PonyExport:Leg3Env1
+    400062: PonyExport:NeckEnv1
+    400064: PonyExport:NeckEnv2
+    400066: PonyExport:NeckEnv3
+    400068: PonyExport:SpineEnv1
+    400070: PonyExport:SpineEnv2
+    400072: PonyExport:SpineEnv3
+    400074: PonyExport:SpineEnv4
+    4300000: PonyExport:Body
+    4300002: PonyExport:ear1
+    4300004: PonyExport:ear2
+    4300006: PonyExport:FrontLeg
+    4300008: PonyExport:FrontLeg1
+    4300010: PonyExport:HindLeg
+    4300012: PonyExport:Hindleg1
+    7400000: Take01
+    7400002: Take02
+    7400004: Take03
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: PonyExport:Body
+    13700002: PonyExport:ear1
+    13700004: PonyExport:ear2
+    13700006: PonyExport:FrontLeg
+    13700008: PonyExport:FrontLeg1
+    13700010: PonyExport:HindLeg
+    13700012: PonyExport:Hindleg1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take01
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Take02
+      takeName: Take 001
+      firstFrame: 9
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Take03
+      takeName: Take 001
+      firstFrame: 45
+      lastFrame: 70.0000076
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .949999988
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  userData: 
