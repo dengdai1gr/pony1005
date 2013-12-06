@@ -1,6 +1,12 @@
 #pragma strict
 
 var toolgm:GameObject;
+var hairmat:Material;
+var t1:Texture;
+var t2:Texture;
+var t3:Texture;
+var t4:Texture;
+var i=0;
 
 function Start () {
 
@@ -25,10 +31,33 @@ function OnGUI()
 	{
 		Application.LoadLevel("Main 3");
 	}
+	if(GUI.Button(Rect(0,160,80,50),"ChangeMat"))
+	{
+		if(i<3)
+		{	
+			i++;		
+		}
+		else
+		{
+			i=0;
+		}
+		ChangeHair(i);
+	}
 }
 
 
-
+function ChangeHair(i:int)
+{
+	if(i==0)
+		hairmat.mainTexture=t1;
+	else if(i==1)
+		hairmat.mainTexture=t2;
+	else if(i==2)
+		hairmat.mainTexture=t3;
+	else {
+		hairmat.mainTexture=t4;
+	}
+}
 
 
 

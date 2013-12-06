@@ -1,10 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/ControlHair.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../New Unity Project/Assets/MeshTes.cs">
     <Files>
-      <File FileName="Assets/Plugins/ControlHair.cs" Line="47" Column="1" />
-      <File FileName="Assets/Plugins/ControlTail.cs" Line="44" Column="4" />
-      <File FileName="Assets/Plugins/CutHairs.cs" Line="30" Column="4" />
+      <File FileName="../../New Unity Project/Assets/MeshTes.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
