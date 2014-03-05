@@ -1,8 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../New Unity Project/Assets/MeshTes.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/script/GUIs.js">
     <Files>
       <File FileName="../../New Unity Project/Assets/MeshTes.cs" Line="1" Column="1" />
+      <File FileName="Assets/script/GUIs.js" Line="34" Column="45" />
+      <File FileName="Assets/Plugins/CBezier.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

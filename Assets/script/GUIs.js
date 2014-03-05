@@ -18,20 +18,20 @@ function Update () {
 
 function OnGUI()
 {
-	if(GUI.Button(Rect(0,10,80,50),"Animation1"))
+	if(GUI.Button(Rect(0,50,80,50),"Animation1"))
 	{
 		PlayAnimation1();
 	}
-	if(GUI.Button(Rect(0,60,80,50),"Animation2"))
+	if(GUI.Button(Rect(0,100,80,50),"Animation2"))
 	{
 		PlayAnimation2();
 	}
 	
-	if(GUI.Button(Rect(0,110,80,50),"Reset"))
+	if(GUI.Button(Rect(0,150,80,50),"Reset"))
 	{
 		Application.LoadLevel("Main 3");
 	}
-	if(GUI.Button(Rect(0,160,80,50),"ChangeMat"))
+	if(GUI.Button(Rect(0,200,80,50),"ChangeHair"))
 	{
 		if(i<3)
 		{	

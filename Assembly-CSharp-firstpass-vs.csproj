@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{36557B0F-F0AA-FCF8-795A-0076C25F8697}</ProjectGuid>
+	<ProjectGuid>{99A4F5E9-08A9-D8E0-AC15-79DD8F1C7658}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -57,6 +57,7 @@
      <Compile Include="Assets\Plugins\GrowUp.cs" />
      <Compile Include="Assets\Plugins\LeanTween.cs" />
      <Compile Include="Assets\Plugins\Pub.cs" />
+     <Compile Include="Assets\Plugins\SkinnedCollisionHelper.cs" />
      <Compile Include="Assets\Plugins\ToolPic.cs" />
      <Compile Include="Assets\Plugins\Tools.cs" />
      <Compile Include="Assets\Plugins\TrailRend.cs" />
